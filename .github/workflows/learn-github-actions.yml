@@ -22,3 +22,8 @@ jobs:
         bundle exec rails db:create
         bundle exec rails db:migrate
         bundle exec rspec
+    - uses: deblockt/cucumber-report-annotations-action@v1.7
+    - name: Cucumber Report to Annotations
+      with:
+        access-token: ${{ secrets.GITHUB_TOKEN }}
+        path: "**/cucumber-report.json"
