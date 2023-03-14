@@ -1,0 +1,24 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Check RSpec
+      env:
+        RAILS_ENV: 'test'
+        DB_HOST: 'localhost'
+        DB_NAME: 'ci_d_test'
+        DB_USERNAME: 'postgres'
+        DB_PASSWORD: 'postgres'
+      run : |
+        bundle exec rails db:create
+        bundle exec rails db:migrate
+        bundle exec rspec
