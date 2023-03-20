@@ -1,7 +1,7 @@
 require 'simplecov'
 # require 'webmock/rspec'
 require 'capybara/rspec'
-
+require 'capybara/apparition'
 # WebMock.disable_net_connect!(allow_localhost: false)
 SimpleCov.start do
   add_filter '/spec'
@@ -40,7 +40,8 @@ Capybara.register_driver :headless_chrome do |app|
     )
 end
 
-Capybara.default_driver = :headless_chrome
+Capybara.default_driver = :apparition
+Capybara.javascript_driver = :apparition
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

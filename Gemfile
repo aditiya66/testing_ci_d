@@ -59,6 +59,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'faker'
   gem 'rspec-sidekiq', require: false
+  gem 'apparition'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
