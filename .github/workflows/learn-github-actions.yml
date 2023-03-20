@@ -21,7 +21,8 @@ jobs:
 
     steps:
       - name: Setup chrome driver (for Selenium)
-      - uses: nanasess/setup-chromedriver@master
+        uses: nanasess/setup-chromedriver@master
+        
       - uses: actions/checkout@v3
       - name: Set up Ruby
         uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
